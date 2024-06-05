@@ -29,10 +29,6 @@ export default function Main() {
 
   const canvasRef = useRef(null);
 
-  // const handleNetworkChange = () => {
-  //   setIsNetworkGood(navigator.onLine);
-  // };
-
   const { webcamRef, detected } = useFaceDetection({
     faceDetectionOptions: {
       model: 'short',
