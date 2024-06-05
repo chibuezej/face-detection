@@ -43,7 +43,6 @@ export default function Main() {
         height: 300,
       }),
   });
-  console.log(detected, 'line 53')
 
 
   const openModal = () => setModalIsOpen(true);
