@@ -24,9 +24,6 @@ const gridItems = [
 
 export default function Main() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [isWebcamReady, setIsWebcamReady] = useState(false);
-  const [isMicReady, setIsMicReady] = useState(false);
-  // const [isFaceDetected, setIsFaceDetected] = useState(false);
   const [isNetworkGood, setIsNetworkGood] = useState(navigator.onLine);
   
 
@@ -57,8 +54,7 @@ export default function Main() {
   const closeModal = () => setModalIsOpen(false);
 
   const handleUserMedia = useCallback(() => {
-    setIsWebcamReady(true);
-    setIsMicReady(true);
+setIsNetworkGood(true)
   }, []);
 
   return (
