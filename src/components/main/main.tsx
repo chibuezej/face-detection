@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from 'react';
 import Webcam from 'react-webcam';
-import FaceDetection from '@mediapipe/face_detection';
+import { FaceDetection } from '@mediapipe/face_detection';
 import { Camera } from '@mediapipe/camera_utils';
 
 import webcamImg from '../../assets/svg/mic.svg';
@@ -33,7 +33,7 @@ export default function Main() {
     faceDetectionOptions: {
       model: 'short',
     },
-    faceDetection: new FaceDetection.FaceDetection({
+    faceDetection: new FaceDetection({
       locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_detection/${file}`,
     }),
     camera: ({ mediaSrc, onFrame }: CameraOptions) =>
