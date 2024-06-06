@@ -1,6 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
-import { FaceDetection } from "@mediapipe/face_detection";
+import { FaceDetection as _FaceDetection } from "@mediapipe/face_detection";
 import { Camera } from "@mediapipe/camera_utils";
 
 import webcamImg from "../../assets/svg/mic.svg";
@@ -51,7 +51,7 @@ export default function Main() {
   const [isNetworkGood, setIsNetworkGood] = useState(navigator.onLine);
 
   const canvasRef = useRef(null);
-
+  const FaceDetection = _FaceDetection || (window as any).FaceDetection;
   const { webcamRef, detected } = useFaceDetection({
     faceDetectionOptions: {
       model: "short",
