@@ -55,7 +55,7 @@ export default function Main() {
   // This is a hack to enable vite properly bundle FaceDetection and Camera
   const FaceDetection = _FaceDetection || (window as any).FaceDetection;
   const Camera = _Camera || (window as any).Camera;
-  
+
   const { webcamRef, detected } = useFaceDetection({
     faceDetectionOptions: {
       model: "short",
@@ -78,7 +78,7 @@ export default function Main() {
   const handleUserMedia = useCallback(() => {
     setIsNetworkGood(true);
   }, []);
-
+  const allChecksMet = detected && webcamRef && isNetworkGood;
   return (
     <div className="bg-[#ffffff] rounded-[20px] w-[80%] md:w-[50%] shadow-2xl px-6 py-8">
       <h1 className="text-[20px] font-medium">System check</h1>
@@ -163,10 +163,12 @@ export default function Main() {
         </div>
       </div>
       <div className="pt-10">
-        <button
-          onClick={openModal}
-          disabled={true}
-          className="bg-[#755AE2] text-white rounded-lg p-4 text-[14px] font-medium"
+           <button
+          onClick={allChecksMet ? openModal : undefined}
+          disabled={!allChecksMet}
+          className={`text-white rounded-lg p-4 text-[14px] font-medium ${
+            allChecksMet ? "bg-[#755AE2]" : "bg-[#755AE2] bg-opacity-75"
+          }`}
         >
           Take picture and continue
         </button>
