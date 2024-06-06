@@ -106,6 +106,7 @@ export default function Main() {
               facingMode: "user",
             }}
           />
+          
           <canvas ref={canvasRef} style={{ position: "absolute" }} />
         </div>
         <div className="grid grid-cols-2 gap-5">
