@@ -1,7 +1,7 @@
 import { useState, useRef, useCallback } from "react";
 import Webcam from "react-webcam";
 import { FaceDetection as _FaceDetection } from "@mediapipe/face_detection";
-import { Camera } from "@mediapipe/camera_utils";
+import { Camera as _Camera } from '@mediapipe/camera_utils';
 
 import webcamImg from "../../assets/svg/mic.svg";
 import bulb from "../../assets/svg/bulb.svg";
@@ -51,7 +51,11 @@ export default function Main() {
   const [isNetworkGood, setIsNetworkGood] = useState(navigator.onLine);
 
   const canvasRef = useRef(null);
+
+  // This is a hack to enable vite properly bundle FaceDetection and Camera
   const FaceDetection = _FaceDetection || (window as any).FaceDetection;
+  const Camera = _Camera || (window as any).Camera;
+  
   const { webcamRef, detected } = useFaceDetection({
     faceDetectionOptions: {
       model: "short",
